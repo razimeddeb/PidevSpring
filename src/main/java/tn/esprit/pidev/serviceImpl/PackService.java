@@ -43,11 +43,11 @@ public class PackService implements IPackService {
 
     }
 
-    @Override
+   /* @Override
     public Pack affcterPackACompany(Long id_user, Long id_Pack) {
         Pack pack=packRepository.findById(id_Pack).orElse(null);
         User  user=userRepository.findById(id_user).orElse(null);
         user.setPack(pack);
         return packRepository.save(pack);
-    }
+    }*/
 }

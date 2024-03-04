@@ -26,8 +26,8 @@ public class User implements Serializable {
     Role role;
 
     @JsonIgnore
-    @ManyToOne
-    Pack pack;
+    @OneToOne
+    Booth  booth;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
     List<Evenement>evenements;

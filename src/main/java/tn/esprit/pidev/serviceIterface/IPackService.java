@@ -10,5 +10,5 @@ public interface IPackService {
     Pack updatePack(Pack pack);
     Pack retrivePack(Long idPack);
     void  removePack (Long idPack);
-    public  Pack affcterPackACompany(Long id_user,Long id_Pack);
+    //public  Pack affcterPackACompany(Long id_user,Long id_Pack);
 }

@@ -23,10 +23,6 @@ public class Pack implements Serializable {
     String description;
     Long price;
     String salle;
-
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="pack")
-    List<User>companys;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="pack")
     List<Booth>booths;

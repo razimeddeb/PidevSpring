@@ -12,10 +12,10 @@ import java.util.List;
 @RequestMapping("pack")
 
 public class PackController {
-    @PutMapping("/affcterPackACompany/{idUser}/{idPack}")
+   /* @PutMapping("/affcterPackACompany/{idUser}/{idPack}")
     public Pack affcterPackACompany(@PathVariable("idUser") Long id_user,@PathVariable("idPack") Long id_Pack) {
         return iPackService.affcterPackACompany(id_user, id_Pack);
-    }
+    }*/
 
     IPackService iPackService;
     @PostMapping("/addPack")

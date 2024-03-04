@@ -2,6 +2,7 @@ package tn.esprit.pidev.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.pidev.dto.BoothDto;
 import tn.esprit.pidev.entity.Booth;
 import tn.esprit.pidev.serviceIterface.IBoothService;
 
@@ -11,6 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("booth")
 public class BoothController {
+
+
+
     IBoothService iBoothService;
     @PostMapping("/addBooth")
     public Booth addBooth(@RequestBody Booth booth) {
@@ -32,6 +36,16 @@ public class BoothController {
     public void removeBooth(@PathVariable("id_Booth") Long idBooth) {
         iBoothService.removeBooth(idBooth);
     }
+
+    @PostMapping("/ajouterBoothEtAffecterAPack/{idPack}")
+    public Booth ajouterBoothEtAffecterAPack(@RequestBody BoothDto boothDto, @PathVariable("idPack") Long idPack) {
+        return iBoothService.ajouterBoothEtAffecterAPack(boothDto, idPack);
+    }
+    @GetMapping("/afficherListBoothWithPackId/{idPack}")
+    public List<Booth> afficherListBoothWithPackId(@PathVariable("idPack") Long idPack) {
+        return iBoothService.afficherListBoothWithPackId(idPack);
+    }
+
 
 
 }
