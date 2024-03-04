@@ -20,7 +20,12 @@ public class Interview implements Serializable {
     Long idInterview;
     LocalDate dateInterview;
     String classRoom;
+    String interviewer;
+    Boolean requestStatus;
     @ManyToMany
-    List<User>companys;
+    List<User>participants;
+    @ManyToOne
+    Offer offer;
+
 
 }

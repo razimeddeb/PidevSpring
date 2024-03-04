@@ -40,21 +40,21 @@ public class User implements Serializable {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="admin")
     List<CallForTender>callForTendersAdmin;
-    @ManyToMany
     @JsonIgnore
+    @ManyToMany
     List<CallForTender>callForTendersORG;
+
+/*    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy="participants")
+    List<Interview>interviews;*/
+
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy="companys")
-    List<Interview>interviews;
-    @JsonIgnore
-    @ManyToMany
-    List<Offer>offersP;
+    @ManyToMany(cascade = CascadeType.ALL)
+    List<Offer> offers;
+
     @JsonIgnore
     @ManyToMany
     List<Review>reviews;
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="company")
-    List<Offer>offersCompany;
 
 
 

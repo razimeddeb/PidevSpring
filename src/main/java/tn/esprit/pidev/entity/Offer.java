@@ -1,5 +1,6 @@
 package tn.esprit.pidev.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -24,10 +25,16 @@ public class Offer implements Serializable {
     String Domain;
     @Enumerated(EnumType.STRING)
     TypeOffer typeOffer;
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy="offersP")
-    List<User>participents;
-    @ManyToOne
-    User company;
+
+/*    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="offer")
+    List<Interview>interviews;*/
+
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy="offers")
+    List<User> users;
+
+
 
 
 }
