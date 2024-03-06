@@ -9,10 +9,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+@Table(name="user")
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User implements Serializable {
     @Id
@@ -20,7 +18,7 @@ public class User implements Serializable {
     Long idUser;
     String userName;
     String address;
-    String mail ;
+    String email ;
     String password;
     @Enumerated(EnumType.STRING)
     Role role;
@@ -56,6 +54,75 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="company")
     List<Offer>offersCompany;
 
+    public User(Long idUser, String userName, String address, String mail, String password, Role role) {
+        this.idUser = idUser;
+        this.userName = userName;
+        this.address = address;
+        this.email = mail;
+        this.password = password;
+        this.role = role;
+    }
 
+    public User() {
+    }
 
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getMail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setMail(String mail) {
+        this.email = mail;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "idUser=" + idUser +
+                ", userName='" + userName + '\'' +
+                ", address='" + address + '\'' +
+                ", mail='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }
