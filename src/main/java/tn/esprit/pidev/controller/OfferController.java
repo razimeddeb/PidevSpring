@@ -1,6 +1,7 @@
 package tn.esprit.pidev.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.pidev.entity.Offer;
 import tn.esprit.pidev.entity.Pack;
@@ -13,12 +14,19 @@ import java.util.List;
 @RequestMapping("offer")
 public class OfferController {
     IOfferService iOfferService;
-    @PostMapping("/addOffer")
-    public Offer addOffer(@RequestBody Offer offer) {return iOfferService.addOffer(offer);}
+
+    @PostMapping("/addOffre/{id}")
+    @ResponseBody
+    public ResponseEntity<Long> addOffer(
+            @PathVariable("id") Long idOffer,
+            @RequestBody Offer offer) {
+        Offer response = iOfferService.addOffer(idOffer, offer);
+        return ResponseEntity.ok(response.getIdOffer());
+    }
 
     @PostMapping("/addAffectOffer/{userId}")
     public Offer AddAffectOffer(@PathVariable("userId") Long userId,@RequestBody Offer o) {return iOfferService.AddAffectOffer(userId,o);}
-//`en:/affecter`+${userId}
+
     @GetMapping("/getAllOffer")
     public List<Offer> retriveOffers() {return iOfferService.retriveOffers();}
     @PutMapping("/UpdateOffer")
@@ -28,10 +36,10 @@ public class OfferController {
     @DeleteMapping("/removeOffer/{id_Offer}")
     public void removeOffer(@PathVariable("id_Offer") Long idOffer) {iOfferService.removeOffer(idOffer);}
 
-/*    @GetMapping("/retrieveOfferByDomain/{domain}")
+   @GetMapping("/retrieveOfferByDomain/{domain}")
     @ResponseBody
-    public List<Offer> getOfferByDomain(@PathVariable String domain ) {
+    public List<Offer> getOfferByDomain(@PathVariable("domain") String domain){
         return iOfferService.getOfferByDomain(domain);
-    }*/
+    }
 
 }

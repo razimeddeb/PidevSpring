@@ -49,7 +49,11 @@ public class User implements Serializable {
     List<Interview>interviews;*/
 
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(
+            name = "user_offer",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "offer_id"))
     List<Offer> offers;
 
     @JsonIgnore

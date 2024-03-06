@@ -6,7 +6,7 @@ import tn.esprit.pidev.entity.Pack;
 import java.util.List;
 
 public interface IOfferService {
-    Offer addOffer(Offer offer);
+    Offer addOffer(long id , Offer offer);
     List<Offer> retriveOffers();
     Offer updateOffer(Offer offer);
     Offer retriveOffer(Long idOffer);

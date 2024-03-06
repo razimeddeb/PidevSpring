@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,17 +23,18 @@ public class Offer implements Serializable {
     String name;
     String description;
     LocalDate dateOffer;
-    String Domain;
+    String domain;
     @Enumerated(EnumType.STRING)
     TypeOffer typeOffer;
 
-/*    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="offer")
-    List<Interview>interviews;*/
-
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy="offers")
-    List<User> users;
+    @OneToMany( mappedBy="offer")
+    private List<Interview>interviews;
+
+
+    @ManyToMany( mappedBy="offers")
+    @JsonIgnore
+    private List<User> users = new ArrayList<>();
 
 
 

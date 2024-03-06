@@ -1,6 +1,7 @@
 package tn.esprit.pidev.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.pidev.entity.Interview;
 import tn.esprit.pidev.entity.Offer;
@@ -14,8 +15,24 @@ import java.util.List;
 @RequestMapping("interview")
 public class InterviewController {
     IInterviewService iInterviewService;
+    IOfferService iOfferService;
     @PostMapping("/addInterview")
-    public Interview addInterview(@RequestBody Interview interview) {return iInterviewService.addInterview(interview);}
+    public  ResponseEntity<Long> addInterview(@RequestBody Interview interview) {
+        Interview response = iInterviewService.addInterview(interview);
+        return ResponseEntity.ok(response.getIdInterview());
+    }
+
+    @PostMapping("/demanderInterview/{userId}/{offerId}")
+    @ResponseBody
+    public ResponseEntity<Long> demanderInterview(
+            @PathVariable("userId") Long userId,
+            @PathVariable("offerId") Long offerId,
+            @RequestBody Interview interview) {
+        Interview response = iInterviewService.demanderInterview(userId,offerId, interview );
+        return ResponseEntity.ok(response.getIdInterview());
+    }
+
+
 
     @GetMapping("/getAllInterview")
     public List<Interview> retriveInterviews() {return iInterviewService.retriveInterviews();}

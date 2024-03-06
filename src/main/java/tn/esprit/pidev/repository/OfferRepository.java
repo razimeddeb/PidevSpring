@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface OfferRepository extends JpaRepository<Offer,Long> {
 
-  //  List<Offer> findByDomainContainingIgnoreCase(String domain);
+  List<Offer> findByDomainContainingIgnoreCase(String domain);
 
 }

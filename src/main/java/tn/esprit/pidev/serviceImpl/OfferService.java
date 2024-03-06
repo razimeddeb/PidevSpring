@@ -22,7 +22,12 @@ public class OfferService implements IOfferService {
     UserRepository uRepo;
 
     @Override
-    public Offer addOffer(Offer offer) {
+    public Offer addOffer(long id, Offer offer) {
+        offerRepository.save(offer);
+        User company = uRepo.findById(id).orElse(null);
+        offer.getUsers().add(company);
+        company.getOffers().add(offer);
+        uRepo.save(company);
         return offerRepository.save(offer);
     }
 
@@ -67,6 +72,6 @@ public class OfferService implements IOfferService {
 
     @Override
     public List<Offer> getOfferByDomain(String domain) {
-        return null;//offerRepository.findByDomainContainingIgnoreCase(domain);
+        return offerRepository.findByDomainContainingIgnoreCase(domain);
     }
 }
