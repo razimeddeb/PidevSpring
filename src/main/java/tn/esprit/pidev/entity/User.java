@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="user")
-
+@Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User implements Serializable {
     @Id
@@ -66,20 +66,16 @@ public class User implements Serializable {
     @ManyToMany
     List<Review>reviews;
 
-    public User(Long idUser, String userName, String address, String mail, String password, Role role) {
+    public User(Long idUser, String userName, String address, String email, String password, Role role) {
         this.idUser = idUser;
         this.userName = userName;
         this.address = address;
-<<<<<<< HEAD
-        this.email = mail;
         this.password = password;
         this.role = role;
-=======
-        this.mail = mail;
+        this.email = email;
         this.password = password;
         this.role = role;
         // Set other fields as needed
->>>>>>> gestion_participant
     }
 
     public User() {
