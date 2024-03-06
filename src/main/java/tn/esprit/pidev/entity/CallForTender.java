@@ -20,6 +20,7 @@ public class CallForTender implements Serializable {
     String description;
     Long quantity;
     String name;
+    String pdfFileName;
     @ManyToOne
     User admin;
     @ManyToMany(mappedBy="callForTendersORG", cascade = CascadeType.ALL)
