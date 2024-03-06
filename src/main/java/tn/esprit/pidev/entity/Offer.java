@@ -1,11 +1,13 @@
 package tn.esprit.pidev.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,13 +23,20 @@ public class Offer implements Serializable {
     String name;
     String description;
     LocalDate dateOffer;
-    String Domain;
+    String domain;
     @Enumerated(EnumType.STRING)
     TypeOffer typeOffer;
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy="offersP")
-    List<User>participents;
-    @ManyToOne
-    User company;
+
+    @JsonIgnore
+    @OneToMany( mappedBy="offer")
+    private List<Interview>interviews;
+
+
+    @ManyToMany( mappedBy="offers")
+    @JsonIgnore
+    private List<User> users = new ArrayList<>();
+
+
 
 
 }

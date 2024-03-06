@@ -1,5 +1,6 @@
 package tn.esprit.pidev.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -20,7 +21,13 @@ public class Interview implements Serializable {
     Long idInterview;
     LocalDate dateInterview;
     String classRoom;
-    @ManyToMany
-    List<User>companys;
+    String interviewer;
+    String cv;
+    int requestStatus;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "offer_id")
+    private Offer offer;
 
 }
