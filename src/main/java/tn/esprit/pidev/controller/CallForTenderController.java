@@ -55,12 +55,7 @@ public class CallForTenderController {
         callForTenderService.removeCallForTender(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @GetMapping("/search")
-    public List<String> search(@RequestParam("query") String query) {
-        // Perform the search based on the query parameter
-        // and return the results as a list of strings
-        return callForTenderService.search(query);
-    }
+
 }
 
 

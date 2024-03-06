@@ -45,15 +45,6 @@ public class CallForTenderService implements ICallForTenderService {
 
 
     }
-    @Override
-    public List<CallForTender> searchCallForTenders(String keyword) {
-
-
-        List<CallForTender> searchResults = new ArrayList<>();
-
-
-        return searchResults;
-    }
 
     }
 

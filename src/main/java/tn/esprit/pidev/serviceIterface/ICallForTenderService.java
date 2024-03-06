@@ -11,7 +11,5 @@ public interface ICallForTenderService {
     CallForTender updateCallForTender(CallForTender callForTender);
     List<CallForTender> retriveCallForTender(Long idc);
     void removeCallForTender(Long idc);
-    List<CallForTender> searchCallForTenders(String keyword);
 
-    List<String> search(String query);
 }

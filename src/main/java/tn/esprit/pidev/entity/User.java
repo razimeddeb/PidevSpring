@@ -24,28 +24,18 @@ public class User implements Serializable {
     String password;
     @Enumerated(EnumType.STRING)
     Role role;
-
-
     @ManyToOne
     @JoinColumn(name = "organizer_id")
     private User organizer;
-
-
-
     @JsonIgnore
     @OneToOne
     Booth  booth;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
     List<Evenement>evenements;
-
-
     @JsonIgnore
     @OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL)
     private List<Task> tasks;
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="admin")
-    List<CallForTender>callForTendersAdmin;
     @JsonIgnore
     @ManyToMany
     List<CallForTender>callForTendersORG;
@@ -53,7 +43,6 @@ public class User implements Serializable {
 /*    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, mappedBy="participants")
     List<Interview>interviews;*/
-
     @JsonIgnore
     @ManyToMany
     @JoinTable(
@@ -65,7 +54,6 @@ public class User implements Serializable {
     @JsonIgnore
     @ManyToMany
     List<Review>reviews;
-
     public User(Long idUser, String userName, String address, String email, String password, Role role) {
         this.idUser = idUser;
         this.userName = userName;
@@ -77,26 +65,20 @@ public class User implements Serializable {
         this.role = role;
         // Set other fields as needed
     }
-
     public User() {
     }
-
     public Long getIdUser() {
         return idUser;
     }
-
     public String getUserName() {
         return userName;
     }
-
     public String getAddress() {
         return address;
     }
-
     public String getMail() {
         return email;
     }
-
     public String getPassword() {
         return password;
     }
