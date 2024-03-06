@@ -9,13 +9,16 @@ public interface ITaskService {
     List<Task> retriveAllTasks();
 
     Task updateTask(Task task);
-   /*  List<AffectationRequest> getAffectationRequests() ;*/
+
+    /*  List<AffectationRequest> getAffectationRequests() ;*/
     Task retriveTask(Long idTask);
 
     void removeTask(Long idTask);
 
   /*  public Task affecterTaskATask(Long idUser, Long idTask) ;
    /* public void acceptAffectationRequest(Long requestId) ;
-   /* public void rejectAffectationRequest(Long requestId) ;*/
+   /* public void rejectAffectationRequest(Long requestId) ;
+   void affecterTaskAUser(Long idUser, Long idTask) ;}*/
+   String affecterTaskAUser(Long idUser, Long idTask) ;
 
-    }
+}

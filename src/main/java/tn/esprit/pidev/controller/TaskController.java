@@ -1,5 +1,6 @@
 package tn.esprit.pidev.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -65,10 +66,27 @@ public class TaskController {
         taskService.removeTask(idTask);
     }
 
-      /*  @PostMapping("/affecterTaskATask/{idUser}/{idTask}")
-        public  Task affecterTaskATask(@PathVariable("idUser") Long idUser,@PathVariable("idTask") Long idTask ){
-            return taskService.affecterTaskATask(idUser, idTask );
-        }*/
+   /* @PostMapping("/affecterTaskAUser/{idUser}/{idTask}")
+    public ResponseEntity<String> affecterTaskAUser(@PathVariable("idUser") Long idUser, @PathVariable("idTask") Long idTask) {
+        try {
+            taskService.affecterTaskAUser(idUser, idTask);
+            return ResponseEntity.ok("Task assigned to user successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error assigning task to user: " + e.getMessage());
+        }
+    }*/
+
+    @PostMapping("/affecterTaskAUser/{idUser}/{idTask}")
+    public ResponseEntity<String> affecterTaskAUser(@PathVariable("idUser") Long idUser, @PathVariable("idTask") Long idTask) {
+        try {
+            String result = taskService.affecterTaskAUser(idUser, idTask);
+            return ResponseEntity.ok(result);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Entity not found: " + e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error assigning task to user: " + e.getMessage());
+        }
+    }
 
 
   /*  @PostMapping("/accept/{requestId}")

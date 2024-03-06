@@ -64,7 +64,15 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="company")
     List<Offer>offersCompany;
 
-
+    public User(Long idUser, String userName, String address, String mail, String password, Role role) {
+        this.idUser = idUser;
+        this.userName = userName;
+        this.address = address;
+        this.mail = mail;
+        this.password = password;
+        this.role = role;
+        // Set other fields as needed
+    }
 
 
 }
