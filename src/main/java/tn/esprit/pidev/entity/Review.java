@@ -1,5 +1,6 @@
 package tn.esprit.pidev.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -19,6 +20,7 @@ public class Review implements Serializable {
     Long idReview;
     String comment;
     Integer ratings;
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, mappedBy="reviews")
     List<User>users;
 

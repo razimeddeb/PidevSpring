@@ -6,7 +6,9 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="user")
@@ -23,18 +25,24 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     Role role;
 
+
+    @ManyToOne
+    @JoinColumn(name = "organizer_id")
+    private User organizer;
+
+
+
     @JsonIgnore
     @ManyToOne
     Pack pack;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
     List<Evenement>evenements;
+
+
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="admin")
-    List<Task>tasksAdmin;
-    @JsonIgnore
-    @ManyToMany
-    List<Task>tasksOrgenizer;
+    @OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL)
+    private List<Task> tasks;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="admin")
     List<CallForTender>callForTendersAdmin;
@@ -62,9 +70,16 @@ public class User implements Serializable {
         this.idUser = idUser;
         this.userName = userName;
         this.address = address;
+<<<<<<< HEAD
         this.email = mail;
         this.password = password;
         this.role = role;
+=======
+        this.mail = mail;
+        this.password = password;
+        this.role = role;
+        // Set other fields as needed
+>>>>>>> gestion_participant
     }
 
     public User() {
