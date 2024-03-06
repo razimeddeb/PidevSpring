@@ -65,16 +65,13 @@ public class TaskController {
         taskService.removeTask(idTask);
     }
 
-        @PostMapping("/affecterTaskATask/{idUser}/{idTask}")
+      /*  @PostMapping("/affecterTaskATask/{idUser}/{idTask}")
         public  Task affecterTaskATask(@PathVariable("idUser") Long idUser,@PathVariable("idTask") Long idTask ){
             return taskService.affecterTaskATask(idUser, idTask );
-        }
-    @GetMapping("/affectation-requests")
-    public List<AffectationRequest> getAffectationRequests() {
-        return taskService.getAffectationRequests();
-    }
+        }*/
 
-    @PostMapping("/accept/{requestId}")
+
+  /*  @PostMapping("/accept/{requestId}")
     public ResponseEntity<?> acceptAffectationRequest(@PathVariable Long requestId) {
         try {
             taskService.acceptAffectationRequest(requestId);
@@ -95,6 +92,6 @@ public class TaskController {
     }
 
 
-
+*/
 
 }

@@ -27,6 +27,7 @@ public class Task implements Serializable {
     @JoinColumn(name = "organizer_id")
     private User organizer;
 
+
     @Enumerated(EnumType.STRING)
     TypeTask typeTask ;
 }

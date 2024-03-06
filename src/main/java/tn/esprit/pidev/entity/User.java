@@ -6,7 +6,9 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -24,6 +26,13 @@ public class User implements Serializable {
     String password;
     @Enumerated(EnumType.STRING)
     Role role;
+
+
+    @ManyToOne
+    @JoinColumn(name = "organizer_id")
+    private User organizer;
+
+
 
     @JsonIgnore
     @ManyToOne
@@ -54,6 +63,7 @@ public class User implements Serializable {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="company")
     List<Offer>offersCompany;
+
 
 
 

@@ -1,35 +1,18 @@
 package tn.esprit.pidev.serviceImpl;
 
-import io.swagger.v3.oas.annotations.servers.Server;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-import tn.esprit.pidev.entity.*;
-import tn.esprit.pidev.repository.AffectationRequestRepository;
-import tn.esprit.pidev.repository.TaskRepository;
-import tn.esprit.pidev.repository.UserRepository;
-import tn.esprit.pidev.serviceIterface.ITaskService;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.pidev.entity.*;
-import tn.esprit.pidev.repository.AffectationRequestRepository;
 import tn.esprit.pidev.repository.TaskRepository;
 import tn.esprit.pidev.repository.UserRepository;
 import tn.esprit.pidev.serviceIterface.ITaskService;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TaskService implements ITaskService {
 
-    @Autowired
-    AffectationRequestRepository affectationRequestRepository;
-private final TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
     @Autowired
     public TaskService(TaskRepository taskRepository ) {
@@ -58,18 +41,18 @@ private final TaskRepository taskRepository;
     public Task retriveTask(Long idTask) {
         return taskRepository.findById(idTask).get();
     }
-    public List<AffectationRequest> getAffectationRequests() {
+    /*public List<AffectationRequest> getAffectationRequests() {
         return affectationRequestRepository.findAll();
-    }
+    }*/
 
     @Override
     public void removeTask(Long idTask) {
           taskRepository.deleteById(idTask);
     }
 
-    @Override
+   /* @Override
 
-    public Task affecterTaskATask(Long idUser, Long idTask) {
+  /*  public Task affecterTaskATask(Long idUser, Long idTask) {
         Task task = taskRepository.findById(idTask).orElse(null);
         User user = userRepository.findById(idUser).orElse(null);
 
@@ -91,7 +74,7 @@ private final TaskRepository taskRepository;
         return null; // Gérer le cas où la tâche ou l'utilisateur n'est pas trouvé
     }
 
-    public void acceptAffectationRequest(Long requestId) {
+   /* public void acceptAffectationRequest(Long requestId) {
         Optional<AffectationRequest> optionalRequest = affectationRequestRepository.findById(requestId);
 
         if (optionalRequest.isPresent()) {
@@ -109,7 +92,7 @@ private final TaskRepository taskRepository;
         }
     }
 
-    public void rejectAffectationRequest(Long requestId) {
+   /* public void rejectAffectationRequest(Long requestId) {
         Optional<AffectationRequest> optionalRequest = affectationRequestRepository.findById(requestId);
 
         if (optionalRequest.isPresent()) {
@@ -124,5 +107,5 @@ private final TaskRepository taskRepository;
             affectationRequestRepository.save(request);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Demande d'affectation non trouvée avec l'ID : " + requestId);
-        }
-    }}
+     */
+}
