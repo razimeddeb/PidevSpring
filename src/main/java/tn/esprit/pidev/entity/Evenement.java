@@ -1,5 +1,6 @@
 package tn.esprit.pidev.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -21,6 +22,8 @@ public class Evenement implements Serializable {
     String nom;
     LocalDate dateEvenement;
     String description;
+
+    @JsonIgnore
     @ManyToOne
     User user;
 
