@@ -31,12 +31,11 @@ public class User implements Serializable {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
     List<Evenement>evenements;
+
+
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="admin")
-    List<Task>tasksAdmin;
-    @JsonIgnore
-    @ManyToMany
-    List<Task>tasksOrgenizer;
+    @OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL)
+    private List<Task> tasks;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="admin")
     List<CallForTender>callForTendersAdmin;

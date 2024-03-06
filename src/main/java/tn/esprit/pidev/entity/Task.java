@@ -1,11 +1,13 @@
 package tn.esprit.pidev.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -20,10 +22,11 @@ public class Task implements Serializable {
     Long idTask;
     String name;
     String description;
+@JsonIgnore
     @ManyToOne
-    User admin;
-    @ManyToMany(mappedBy="tasksOrgenizer", cascade = CascadeType.ALL)
-    List<User>organisers;
+    @JoinColumn(name = "organizer_id")
+    private User organizer;
 
-
+    @Enumerated(EnumType.STRING)
+    TypeTask typeTask ;
 }
