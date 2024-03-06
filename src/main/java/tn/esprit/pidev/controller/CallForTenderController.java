@@ -56,12 +56,10 @@ public class CallForTenderController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @GetMapping("/search")
-    public ResponseEntity<List<CallForTender>> searchCallForTenders(@RequestParam("keyword") String keyword) {
-        List<CallForTender> searchResults = callForTenderService.searchCallForTenders(keyword);
-        if (searchResults.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(searchResults, HttpStatus.OK);
+    public List<String> search(@RequestParam("query") String query) {
+        // Perform the search based on the query parameter
+        // and return the results as a list of strings
+        return callForTenderService.search(query);
     }
 }
 

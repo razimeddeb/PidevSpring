@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.pidev.PDF.PdfGenerator;
 import tn.esprit.pidev.entity.CallForTender;
 import tn.esprit.pidev.repository.CallForTenderRepository;
 import tn.esprit.pidev.serviceIterface.ICallForTenderService;
@@ -15,6 +16,7 @@ public class CallForTenderService implements ICallForTenderService {
 
     @Autowired
     CallForTenderRepository callForTenderRepository;
+    private PdfGenerator pdfGenerator;
     @Override
     public CallForTender addCallForTender(CallForTender callForTender) {
         return callForTenderRepository.save(callForTender);
@@ -27,6 +29,7 @@ public class CallForTenderService implements ICallForTenderService {
 
     @Override
     public CallForTender updateCallForTender(CallForTender callForTender) {
+        System.out.println("call"+callForTender);
         return callForTenderRepository.save(callForTender);
     }
 
@@ -51,5 +54,6 @@ public class CallForTenderService implements ICallForTenderService {
 
         return searchResults;
     }
+
     }
 
